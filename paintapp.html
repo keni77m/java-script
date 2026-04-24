@@ -1,0 +1,58 @@
+<head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous"
+  />
+</head>
+<body>
+  <h1>keni's app</h1>
+  <canvas
+    id="canvas"
+    class="border border-info"
+    width="800"
+    height="600"
+  ></canvas>
+</body>
+<script>
+  console.log("hello");
+  //grab the canvas
+  let canvas = document.getElementById("canvas");
+  let brush=canvas.getContext("2d")
+  brush.moveTo(0,300)
+  brush.lineTo(800,300)
+  let isdrawing=false
+  brush.stroke()
+  canvas.addEventListener("mousedown",triggerdown)
+  canvas.addEventListener("moveup",triggerup)
+  canvas.addEventListener("mouseleave",triggerleave)
+  canvas.addEventListener("mousemove",triggermove)
+  function triggerup()
+  {
+    isdrawing=false
+  }
+  function triggermove(mouse)
+  {
+    console.log("moving inside canvas")
+    //draw line to the mouse
+    if(isdrawing==true)
+  {
+    brush.lineTo(mouse.offsetX,mouse.offsetY)
+      brush.stroke()
+  }
+  
+  
+  }
+  function triggerdown(mouse)
+  {
+    console.log("mouse entered the canvas")
+    //move brush to mouse
+    brush.moveTo(mouse.offsetX,mouse.offsetY)
+    isdrawing=true
+  }
+  function triggerleave(mouse)
+  {
+    console.log("mouse left the canvas")
+  }
+</script>
