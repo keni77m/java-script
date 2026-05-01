@@ -6,53 +6,102 @@
     crossorigin="anonymous"
   />
 </head>
-<body>
-  <h1>keni's app</h1>
-  <canvas
-    id="canvas"
-    class="border border-info"
-    width="800"
-    height="600"
-  ></canvas>
+<body class="bg-warning">
+  <div class="d-flex justify-content-center flex-column align-items-center">
+    <h1>keni's app</h1>
+    <div>
+      <button
+        class="bg-success w-25 p-3 rounded-circle"
+        id="green btn"
+      ></button>
+      <button class="bg-info w-25 p-3 rounded-circle" id="blue btn"></button>.
+      <button class="bg-danger w-25 p-3 rounded-circle" id="red btn"></button>
+      <button style="background: brown;" class="bg- w-25 p-3 rounded-circle" id="red btn"></button>
+      
+      <button
+        class="bg-warning w-25 p-3 rounded-circle"
+        id="yellow btn"
+      ></button>
+    </div>
+    <input id="brushsize" type="number" />
+    <br />
+    <canvas
+      id="canvas"
+      class="border border-info"
+      width="800"
+      height="600"
+    ></canvas>
+  </div>
 </body>
 <script>
-  console.log("hello");
+  //grab the input
+  let input = document.getElementById("brushsize");
+  input.addEventListener("input", triggerbrushsize);
+  //grab the success button
+  let greenbti = document.getElementById("green btn");
+  greenbti.addEventListener("click", triggergreen);
+  //grab the blue button
+  let bluebti = document.getElementById("blue btn");
+  bluebti.addEventListener("click", triggerblue);
+  let redbti = document.getElementById("red btn");
+  redbti.addEventListener("click", triggerred);
+  let yellowbti = document.getElementById("yellow btn");
+  yellowbti.addEventListener("click", triggeryellow);
+  //grab the 
+
+  let brownbti = document.getElementById("brown btn")
+  brownbti.addEventListener("click",triggerbrown)
   //grab the canvas
   let canvas = document.getElementById("canvas");
-  let brush=canvas.getContext("2d")
-  brush.moveTo(0,300)
-  brush.lineTo(800,300)
-  let isdrawing=false
-  brush.stroke()
-  canvas.addEventListener("mousedown",triggerdown)
-  canvas.addEventListener("moveup",triggerup)
-  canvas.addEventListener("mouseleave",triggerleave)
-  canvas.addEventListener("mousemove",triggermove)
-  function triggerup()
-  {
-    isdrawing=false
+  let brush = canvas.getContext("2d");
+  brush.fillStyle = "white";
+  brush.fillRect(0, 0, 800, 600);
+  let isdrawing = false;
+  brush.stroke();
+  canvas.addEventListener("mousedown", triggerdown);
+  canvas.addEventListener("mouseup", triggerup);
+  canvas.addEventListener("mouseleave", triggerleave);
+  canvas.addEventListener("mousemove", triggermove);
+  function triggerup() {
+    isdrawing = false;
   }
-  function triggermove(mouse)
-  {
-    console.log("moving inside canvas")
+
+  function triggermove(mouse) {
+    console.log("moving inside canvas");
     //draw line to the mouse
-    if(isdrawing==true)
-  {
-    brush.lineTo(mouse.offsetX,mouse.offsetY)
-      brush.stroke()
+    if (isdrawing == true) {
+      brush.lineTo(mouse.offsetX, mouse.offsetY);
+      brush.stroke();
+    }
   }
-  
-  
-  }
-  function triggerdown(mouse)
-  {
-    console.log("mouse entered the canvas")
+  function triggerdown(mouse) {
+    console.log("mouse entered the canvas");
     //move brush to mouse
-    brush.moveTo(mouse.offsetX,mouse.offsetY)
-    isdrawing=true
+    brush.moveTo(mouse.offsetX, mouse.offsetY);
+    brush.beginPath();
+    isdrawing = true;
   }
-  function triggerleave(mouse)
+  function triggerleave(mouse) {
+    console.log("mouse left the canvas");
+  }
+  function triggergreen() {
+    brush.strokeStyle = "green";
+  }
+  function triggerblue() {
+    brush.strokeStyle = "blue";
+  }
+  function triggerred() {
+    brush.strokeStyle = "red";
+  }
+  function triggeryellow() {
+    brush.strokeStyle = "yellow";
+  }
+  function triggerbrushsize() 
   {
-    console.log("mouse left the canvas")
+brush.lineWidth=input.value
+  }
+  function triggerbrown()
+  {
+    brush.strokeStyle ="brown";
   }
 </script>
