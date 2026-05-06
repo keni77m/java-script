@@ -11,19 +11,25 @@
     <h1>keni's app</h1>
     <div>
       <button
-        class="bg-success w-25 p-3 rounded-circle"
+        class="bg-success w-5 p-3 rounded-circle"
         id="green btn"
       ></button>
-      <button class="bg-info w-25 p-3 rounded-circle" id="blue btn"></button>.
-      <button class="bg-danger w-25 p-3 rounded-circle" id="red btn"></button>
-      <button style="background: brown;" class="bg- w-25 p-3 rounded-circle" id="red btn"></button>
-      
+      <button class="bg-info w-5 p-3 rounded-circle" id="blue btn"></button>.
+      <button class="bg-danger w-5 p-3 rounded-circle" id="red btn"></button>
       <button
-        class="bg-warning w-25 p-3 rounded-circle"
+        style="background: brown"
+        class="bg- w-5 p-3 rounded-circle"
+        id="brown btn"
+      ></button>
+      <button class="bg-light w-5 p-3 rounded-circle" id="white btn"></button>.
+      <button
+        class="bg-warning w-5 p-3 rounded-circle"
         id="yellow btn"
       ></button>
     </div>
     <input id="brushsize" type="number" />
+    <p>colour white is the eraser or rubber</p>
+
     <br />
     <canvas
       id="canvas"
@@ -47,10 +53,12 @@
   redbti.addEventListener("click", triggerred);
   let yellowbti = document.getElementById("yellow btn");
   yellowbti.addEventListener("click", triggeryellow);
-  //grab the 
+  let whitebti = document.getElementById("white btn");
+  whitebti.addEventListener("click", triggerwhite);
+  //grab the
 
-  let brownbti = document.getElementById("brown btn")
-  brownbti.addEventListener("click",triggerbrown)
+  let brownbti = document.getElementById("brown btn");
+  brownbti.addEventListener("click", triggerbrown);
   //grab the canvas
   let canvas = document.getElementById("canvas");
   let brush = canvas.getContext("2d");
@@ -96,12 +104,13 @@
   function triggeryellow() {
     brush.strokeStyle = "yellow";
   }
-  function triggerbrushsize() 
-  {
-brush.lineWidth=input.value
+  function triggerbrushsize() {
+    brush.lineWidth = input.value;
   }
-  function triggerbrown()
-  {
-    brush.strokeStyle ="brown";
+  function triggerbrown() {
+    brush.strokeStyle = "brown";
+  }
+  function triggerwhite() {
+    brush.strokeStyle = "white";
   }
 </script>
