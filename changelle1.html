@@ -1,0 +1,23 @@
+<head></head>
+<body id="body">
+<button id="light btn">light</button>
+<button id="dark btn">dark</button>
+
+<script>
+  let lightbti= document.getElementById("light btn")  
+  lightbti.addEventListener("click",triggerlight)
+  let darkbti = document.getElementById("dark btn")
+  darkbti.addEventListener("click",triggerdark)
+  function triggerdark()
+  {
+    let body= document.getElementById("body")
+    body.style.background="black"
+  }
+  function triggerlight()
+  {
+    let body = document.getElementById("body")
+    body.style.background="white"
+  }
+
+</script>
+</body>

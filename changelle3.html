@@ -1,0 +1,25 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="d-flex flex-column align-items-center">
+    <h1 class="p-2">top secret decoder</h1>
+    <p class="text-success " id="hidden btn">java-chip-cookies</p>
+    <button id="hide btn">hide message</button>
+    <button id="reveal btn">reveal message</button>
+</body>
+<script>
+    let hidden = document.getElementById("hidden btn")
+    hidden.style.display="none"
+    let hide = document.getElementById("hide btn")
+    hide.addEventListener("click",triggerkeni)
+    let reveal = document.getElementById("reveal btn")
+    reveal.addEventListener("click",triggerreveal)
+    function triggerkeni()
+    {
+        hidden.style.display="none"
+    }
+    function triggerreveal()
+    {
+        hidden.style.display=""
+    }
+</script>
